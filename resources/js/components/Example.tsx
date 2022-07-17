@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 function Example() {
+    const greet: string = "I'm an example component!!!";
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -9,7 +10,7 @@ function Example() {
                     <div className="card">
                         <div className="card-header">Example Component</div>
 
-                        <div className="card-body">I'm an example component!</div>
+                        <div className="card-body">{ greet }</div>
                     </div>
                 </div>
             </div>
