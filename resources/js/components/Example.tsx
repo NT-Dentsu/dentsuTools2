@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 function Example() {
-    const greet: string = "I'm an example component!!!";
+    const greet = "I'm an example component!!!";
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -10,7 +10,7 @@ function Example() {
                     <div className="card">
                         <div className="card-header">Example Component</div>
 
-                        <div className="card-body">{ greet }</div>
+                        <div className="card-body">{greet}</div>
                     </div>
                 </div>
             </div>
@@ -20,5 +20,9 @@ function Example() {
 
 export default Example;
 
-const root = createRoot(document.getElementById('app')!);
+const element = document.getElementById('app');
+if (element === null) {
+    throw new Error('Failed to find the app element');
+}
+const root = createRoot(element);
 root.render(<Example />);
