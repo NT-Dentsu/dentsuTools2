@@ -18,7 +18,7 @@ module.exports = {
         tsconfigRootDir: __dirname,
         project: ['./tsconfig.json'],
     },
-    ignorePatterns: ['.eslintrc.js'],
+    ignorePatterns: ['.eslintrc.js', 'resources/js/bootstrap.js'],
     rules: {
         // importのときに以下の拡張子を記述しなくてもエラーにしない
         'import/extensions': [
