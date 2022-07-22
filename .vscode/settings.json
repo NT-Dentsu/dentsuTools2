@@ -5,5 +5,9 @@
         // ESLintに対応しているファイルはESLintでフォーマット
         "source.fixAll.eslint": true
     },
-    "php.validate.executablePath": "./php_validate.sh"
+    "[php]": {
+        "editor.defaultFormatter": "junstyle.php-cs-fixer"
+    },
+    "php-cs-fixer.onsave": true,
+    "phpstan.timeout": 20000
 }
