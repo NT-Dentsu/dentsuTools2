@@ -9,5 +9,6 @@
         "editor.defaultFormatter": "junstyle.php-cs-fixer"
     },
     "php-cs-fixer.onsave": true,
-    "phpstan.timeout": 20000
+    "phpstan.timeout": 20000,
+    "phpstan.showProgress": true
 }

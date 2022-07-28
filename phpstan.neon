@@ -11,10 +11,12 @@ parameters:
         - routes
         - tests
     # The level 9 is the highest level
-    level: 5
+    level: 3
 
     ignoreErrors:
         - '#PHPDoc tag @var#'
+        - '#Undefined variable: \$this#'
+    reportUnmatchedIgnoredErrors: false
 
     excludePaths:
         - ./*/*/FileToBeExcluded.php
