@@ -7,9 +7,9 @@
         "format": "prettier --write 'resources/**/*.{js,jsx,ts,tsx,json,css}'",
         "fix": "npm run lint && npm run format",
         "php-lint": "vendor/bin/phpstan analyze --configuration=phpstan.neon",
-        "php-format": "vendor/bin/php-cs-fixer --config=.php-cs-fixer.dist.php fix -v --diff"
+        "php-format": "vendor/bin/php-cs-fixer --config=.php-cs-fixer.dist.php fix -v --diff",
+        "prepare": "husky install"
     },
-    "prepare": "husky install",
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^5.30.7",
         "@typescript-eslint/parser": "^5.30.7",
