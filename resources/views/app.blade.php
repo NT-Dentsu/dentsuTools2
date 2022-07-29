@@ -19,7 +19,7 @@
     <!-- Styles -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     @viteReactRefresh
-    @vite('resources/js/app.tsx')
+    @vite('resources/app.tsx')
 </head>
 <body>
     <div id="app">
