@@ -37,6 +37,16 @@ module.exports = {
                 extensions: ['.jsx', '.tsx'],
             },
         ],
+        // 関数コンポーネント定義で、アロー関数以外受け付けない
+        'react/function-component-definition': [
+            2,
+            {
+                namedComponents: 'arrow-function',
+                unnamedComponents: 'arrow-function',
+            },
+        ],
+        // 画像の代替テキスト表示を無効化
+        'jsx-a11y/alt-text': 'off',
     },
     settings: {
         // importするファイルをjsだけではなく、tsを含むファイルを許可する

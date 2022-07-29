@@ -1,22 +1,25 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import Card from 'react-bootstrap/Card';
 
-function Example() {
+const Example = () => {
     const greet = "I'm an example component!!!";
     return (
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Example Component</div>
-
-                        <div className="card-body">{greet}</div>
-                    </div>
+                    <Card>
+                        <Card.Body>
+                            <Card.Title>Example Component</Card.Title>
+                            <Card.Text>{greet}</Card.Text>
+                        </Card.Body>
+                        <Card.Img src="/images/composition.jpg" />
+                    </Card>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default Example;
 

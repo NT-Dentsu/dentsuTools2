@@ -12,4 +12,6 @@ import './bootstrap';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// Bootstrapライブラリの読み込み
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './components/Example';
