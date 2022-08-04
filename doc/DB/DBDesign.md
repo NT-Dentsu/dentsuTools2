@@ -11,9 +11,9 @@
 | 1   | ユーザー ID      | user_id       | VARCHAR  | 20     | ○      | ×         | なし         | ユーザーログイン時に使用する。               |
 | 2   | ユーザー名       | user_name     | VARCHAR  | 40     | ×      | ×         | なし         | ユーザー登録時はユーザー ID と同じ値にする。 |
 | 3   | パスワード       | password_hash | CHAR     | 60     | ×      | ×         | なし         | -                                            |
-| 4   | 登録日時         | insert_time   | DATETIME | -      | ×      | ○         | なし         | -                                            |
-| 5   | 更新日時         | update_time   | DATETIME | -      | ×      | ○         | なし         | ユーザー登録時は登録日時と同じ値にする。     |
-| 6   | ユーザーアイコン | user_icon     | TEXT     | -      | ×      | ○         | なし         | ユーザーアイコンのパス。                     |
+| 4   | ユーザーアイコン | user_icon     | TEXT     | -      | ×      | ○         | なし         | ユーザーアイコンのパス。                     |
+| 5   | 登録日時         | insert_time   | DATETIME | -      | ×      | ○         | なし         | -                                            |
+| 6   | 更新日時         | update_time   | DATETIME | -      | ×      | ○         | なし         | ユーザー登録時は登録日時と同じ値にする。     |
 
 ---
 

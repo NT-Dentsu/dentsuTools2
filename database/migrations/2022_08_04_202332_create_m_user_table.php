@@ -14,9 +14,9 @@ return new class() extends Migration {
             $table->string('user_id', 20)->primary();
             $table->string('user_name', 40);
             $table->char('password_hash', 60);
+            $table->text('user_icon')->nullable();
             $table->datetime('insert_time')->nullable();
             $table->datetime('updated_time')->nullable();
-            $table->text('user_icon')->nullable();
         });
     }
 
