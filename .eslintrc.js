@@ -18,7 +18,7 @@ module.exports = {
         tsconfigRootDir: __dirname,
         project: ['./tsconfig.json'],
     },
-    ignorePatterns: ['.eslintrc.js', 'resources/bootstrap.js', 'vite.config.js'],
+    ignorePatterns: ['.eslintrc.js', 'resources/bootstrap.js', 'vite.config.js', 'node_modules/'],
     rules: {
         // importのときに以下の拡張子を記述しなくてもエラーにしない
         'import/extensions': [
@@ -47,6 +47,8 @@ module.exports = {
         ],
         // 画像の代替テキスト表示を無効化
         'jsx-a11y/alt-text': 'off',
+        'no-alert': 'off',
+        'no-console': 'off',
     },
     settings: {
         // importするファイルをjsだけではなく、tsを含むファイルを許可する
