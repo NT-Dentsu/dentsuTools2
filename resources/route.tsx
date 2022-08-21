@@ -4,7 +4,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Profile from './pages/profile/Profile';
 import Customize from './pages/customize/Customize';
-import Auth from './pages/auth/Auth';
+import SignIn from './pages/auth/SignIn';
+import SignUp from './pages/auth/SignUp';
 import Layout from './layout/Layout';
 
 const App = () => (
@@ -15,7 +16,8 @@ const App = () => (
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/customize" element={<Customize />} />
             </Route>
-            <Route path="/auth" element={<Auth />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
         </Routes>
     </BrowserRouter>
 );

@@ -18,6 +18,9 @@ const Layout = () => (
                 <li>
                     <NavLink to="/customize">Customize</NavLink>
                 </li>
+                <li>
+                    <NavLink to="/signin">Signin</NavLink>
+                </li>
             </ul>
         </div>
         <Outlet />
