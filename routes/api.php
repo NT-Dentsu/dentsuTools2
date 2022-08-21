@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// 認証していなくても利用できるAPIはここに書く
+Route::post('/signup', [LoginController::class, 'signup']);
+Route::post('/signin', [LoginController::class, 'signin']);
+Route::post('/signout', [LoginController::class, 'signout']);
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    // 認証後に限り利用できるAPIはここに書く
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
 });
