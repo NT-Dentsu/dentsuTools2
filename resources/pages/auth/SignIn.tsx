@@ -1,9 +1,10 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 import axios, { AxiosError } from 'axios';
 import styled, { createGlobalStyle } from 'styled-components';
-import { Button, Form, FloatingLabel } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import InputForm from './componetns/InputForm';
 
 type LoginParams = {
     id: string;
@@ -44,19 +45,9 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const SigninForm = () => {
-    const [id, setEmail] = useState('');
+    const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
-    const changeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-    };
-    const changePassword = (e: ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    };
-
-    // 入力チェック
-    const validateFunc = (val: string) => !(val.length >= 6 && val.length <= 20 && val.match(/^[0-9a-zA-Z-]+$/));
 
     const handleClick = () => {
         const loginParams: LoginParams = { id, password };
@@ -88,30 +79,7 @@ const SigninForm = () => {
             </h1>
             <p>半角英数字ハイフン，6文字以上20文字以内 で入力してください</p>
             <Form>
-                <Form.Group className="mb-3" controlId="formId">
-                    <FloatingLabel controlId="floatingId" label="ユーザID">
-                        <Form.Control
-                            type="text"
-                            onChange={changeEmail}
-                            placeholder="ユーザID"
-                            required
-                            isInvalid={validateFunc(id)}
-                            autoFocus
-                        />
-                    </FloatingLabel>
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formPassword">
-                    <FloatingLabel controlId="floatingPassword" label="パスワード">
-                        <Form.Control
-                            type="password"
-                            onChange={changePassword}
-                            placeholder="パスワード"
-                            required
-                            isInvalid={validateFunc(password)}
-                        />
-                    </FloatingLabel>
-                </Form.Group>
+                <InputForm idform={{ id, setId }} pwform={{ password, setPassword }} />
                 <Button variant="primary" className="mb-3" size="lg" onClick={handleClick}>
                     ログイン
                 </Button>
