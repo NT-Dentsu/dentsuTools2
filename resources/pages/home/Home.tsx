@@ -4,6 +4,9 @@ import Button from 'react-bootstrap/Button';
 import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+// styled componetnts(glid-layout用)をインポート
+import * as GridLayout from '../../css/grid_layout';
+
 interface Response {
     message: string;
 }
@@ -52,6 +55,22 @@ const Home = () => {
                         </Card.Body>
                         <Card.Img src="/images/composition.jpg" />
                     </Card>
+                    {/* 「GridLayout.Container」という親要素（div 要素）内に配置した「GridLayout.PanelWrap」という要素（div 要素）を整列させる処理を行う */}
+                    {/* グリッドレイアウトを使用 */}
+                    <GridLayout.Wrapper>
+                        <GridLayout.Container>
+                            {/* グリッドのサイズ調整用 */}
+                            <GridLayout.PanelWrap area="1 / 1" />
+                            <GridLayout.PanelWrap area="1 / 2" />
+                            <GridLayout.PanelWrap area="1 / 3" />
+                            <GridLayout.PanelWrap area="1 / 4" />
+                            <GridLayout.PanelWrap area="2 / 1" />
+                            <GridLayout.PanelWrap area="3 / 1" />
+                            <GridLayout.PanelWrap area="4 / 1" />
+
+                            {/* ここにパネルが追加される */}
+                        </GridLayout.Container>
+                    </GridLayout.Wrapper>
                 </div>
                 <Button variant="primary" className="mb-3" size="lg" onClick={logout}>
                     ログアウト
