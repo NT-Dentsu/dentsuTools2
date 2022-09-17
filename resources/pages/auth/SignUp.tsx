@@ -10,9 +10,9 @@ type LoginParams = {
     password: string;
 };
 
-interface Response {
+type MessageResponse = {
     message: string;
-}
+};
 
 const SignupForm = () => {
     const [id, setId] = useState('');
@@ -22,12 +22,12 @@ const SignupForm = () => {
     const handleClick = () => {
         const loginParams: LoginParams = { id, password };
         axios
-            .post<Response>('/api/signup', loginParams)
+            .post<MessageResponse>('/api/signup', loginParams)
             .then((response) => {
                 alert(response.data.message);
                 navigate('/signin');
             })
-            .catch((error: AxiosError<Response>) => {
+            .catch((error: AxiosError<MessageResponse>) => {
                 if (error.response !== undefined) alert(error.response.data.message);
             });
     };

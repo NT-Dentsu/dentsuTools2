@@ -11,9 +11,9 @@ type LoginParams = {
     password: string;
 };
 
-interface Response {
+type MessageResponse = {
     message: string;
-}
+};
 
 const SigninForm = () => {
     const [id, setId] = useState('');
@@ -29,12 +29,12 @@ const SigninForm = () => {
                 console.log('csrf-cookieは成功');
                 // ログイン処理
                 axios
-                    .post<Response>('/api/signin', loginParams)
+                    .post<MessageResponse>('/api/signin', loginParams)
                     .then((response) => {
                         alert(response.data.message);
                         navigate('/');
                     })
-                    .catch((error: AxiosError<Response>) => {
+                    .catch((error: AxiosError<MessageResponse>) => {
                         if (error.response !== undefined) alert(error.response.data.message);
                     });
             })
