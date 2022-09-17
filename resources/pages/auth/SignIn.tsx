@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios, { AxiosError } from 'axios';
-import styled, { createGlobalStyle } from 'styled-components';
 import { Button, Form } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthWrapper, AuthGlobalStyle } from './css/GlobalView';
 import InputForm from './components/InputForm';
 
 type LoginParams = {
@@ -14,35 +14,6 @@ type LoginParams = {
 interface Response {
     message: string;
 }
-
-const Wrapper = styled.div`
-    margin: auto;
-    width: 50%;
-    max-width: 520px;
-    h1,
-    p {
-        text-align: center;
-    }
-    button {
-        display: block;
-        margin: auto;
-    }
-`;
-const GlobalStyle = createGlobalStyle`
-    html, body {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    html {
-        display: table;
-    }
-    body {
-        display: table-cell;
-        vertical-align: middle;
-    }
-`;
 
 const SigninForm = () => {
     const [id, setId] = useState('');
@@ -72,8 +43,8 @@ const SigninForm = () => {
             });
     };
     return (
-        <Wrapper>
-            <GlobalStyle />
+        <AuthWrapper>
+            <AuthGlobalStyle />
             <h1>
                 <Link to="/">Dentsu Tools</Link>
             </h1>
@@ -92,7 +63,7 @@ const SigninForm = () => {
                     </Button>
                 </LinkContainer>
             </div>
-        </Wrapper>
+        </AuthWrapper>
     );
 };
 
