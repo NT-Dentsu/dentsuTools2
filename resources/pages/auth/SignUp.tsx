@@ -54,6 +54,9 @@ const SignupForm = () => {
         setPassword(e.target.value);
     };
 
+    // 入力チェック
+    const validateFunc = (val: string) => !(val.length >= 6 && val.length <= 20 && val.match(/^[0-9a-zA-Z-]+$/));
+
     const handleClick = () => {
         const loginParams: LoginParams = { id, password };
         axios
@@ -77,7 +80,14 @@ const SignupForm = () => {
             <Form>
                 <Form.Group className="mb-3" controlId="formId">
                     <FloatingLabel controlId="floatingId" label="ユーザID">
-                        <Form.Control type="text" onChange={changeEmail} placeholder="ユーザID" required isInvalid />
+                        <Form.Control
+                            type="text"
+                            onChange={changeEmail}
+                            placeholder="ユーザID"
+                            required
+                            isInvalid={validateFunc(id)}
+                            autoFocus
+                        />
                     </FloatingLabel>
                 </Form.Group>
 
@@ -88,7 +98,7 @@ const SignupForm = () => {
                             onChange={changePassword}
                             placeholder="パスワード"
                             required
-                            isInvalid
+                            isInvalid={validateFunc(password)}
                         />
                     </FloatingLabel>
                 </Form.Group>
