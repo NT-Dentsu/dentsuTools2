@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import InputForm from './componetns/InputForm';
+import InputForm from './components/InputForm';
 
 type LoginParams = {
     id: string;
