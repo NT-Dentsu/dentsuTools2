@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Heart } from 'react-feather';
 
 // styled componetnts(glid-layout用)をインポート
 import * as GridLayout from '../../css/grid_layout';
@@ -50,7 +51,10 @@ const Home = () => {
                 <div className="col-md-8">
                     <Card>
                         <Card.Body>
-                            <Card.Title>Home Component</Card.Title>
+                            <Card.Title>
+                                Home Component
+                                <Heart color="red" />
+                            </Card.Title>
                             <Card.Text>{greet}</Card.Text>
                         </Card.Body>
                         <Card.Img src="/images/composition.jpg" />
