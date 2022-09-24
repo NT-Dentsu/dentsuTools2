@@ -8,27 +8,27 @@ import { Heart } from 'react-feather';
 // styled componetnts(glid-layout用)をインポート
 import * as GridLayout from '../../css/grid_layout';
 
-interface Response {
+type MessageResponse = {
     message: string;
-}
+};
 
-interface User {
+type User = {
     user_id: string;
     password_hash: string;
     insert_time: string;
-}
+};
 
 const Home = () => {
     const greet = "I'm an home component!!!";
     const navigate = useNavigate();
     const logout = () => {
         axios
-            .post<Response>('/api/signout')
+            .post<MessageResponse>('/api/signout')
             .then((response) => {
                 alert(response.data.message);
                 navigate('/signin');
             })
-            .catch((error: AxiosError<Response>) => {
+            .catch((error: AxiosError<MessageResponse>) => {
                 if (error.response !== undefined) alert(error.response.data.message);
             });
     };
@@ -41,7 +41,7 @@ const Home = () => {
                     `user_id: ${response.data.user_id}\npassword_hash: ${response.data.password_hash}\n insert_time: ${response.data.insert_time}`
                 );
             })
-            .catch((error: AxiosError<Response>) => {
+            .catch((error: AxiosError<MessageResponse>) => {
                 if (error.response !== undefined) alert(error.response.data.message);
             });
     };
