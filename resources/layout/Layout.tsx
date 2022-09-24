@@ -12,10 +12,10 @@ const Layout = () => (
         </header>
         <Container fluid>
             <Row className="flex-xl-nowrap">
-                <Col xs={12} md={3} xl={4}>
+                <Col xs={12} md={3} lg={2}>
                     <SideBar />
                 </Col>
-                <Col as="main" xs={12} md={9} xl={8}>
+                <Col as="main" xs={12} md={9} lg={10}>
                     <Outlet />
                 </Col>
             </Row>
