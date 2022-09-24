@@ -11,9 +11,9 @@ const SidePanel = styled(Nav)`
     @media (min-width: 768px) {
         // md(768px)以上のとき適用
         position: sticky;
-        top: 4rem;
+        top: 0;
+        height: 100vh;
         z-index: 1000;
-        height: calc(100vh - 4rem);
         border-right: 1px solid #ececec;
     }
 `;
