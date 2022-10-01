@@ -1,7 +1,7 @@
 /**
  * 制作者：NumLock
  * 制作日：2022/09/10
- * 更新日：2022/09/17
+ * 更新日：2022/10/01
  * パネル関連のあれこれをカスタムhooksで実装
  */
 
@@ -9,7 +9,7 @@
 import { useState } from 'react';
 
 // PanelInfoの引数の型
-type PanelInfoProps = {
+export type PanelInfoProps = {
     _panelName: string;
     _pos: number;
     _size: number;
