@@ -36,17 +36,17 @@ const usePanelInfo = ({
     _size,
     _imgLink,
     _toolLink,
-}: PanelInfoProps): [
+}: PanelInfoProps): {
     // 返り値
-    string,
-    string,
-    string,
-    string,
-    () => void,
-    () => DataReturn,
+    className: string;
+    gridSize: string;
+    toolLink: string;
+    imageLink: string;
+    InitState: () => void;
+    Data: () => DataReturn;
     // eslint-disable-next-line no-unused-vars
-    ({ cPanelName, contentLink, contentImage }: SetContentProps) => void
-] => {
+    SetContent: ({ cPanelName, contentLink, contentImage }: SetContentProps) => void;
+} => {
     // メンバ？
     const [panelName, setPanelName] = useState(_panelName);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
@@ -99,7 +99,8 @@ const usePanelInfo = ({
         // console.log(content.content_image);
     }
 
-    return [className, gridSize, toolLink, imageLink, InitState, Data, SetContent];
+    // オブジェクトを返すように
+    return { className, gridSize, toolLink, imageLink, InitState, Data, SetContent };
 };
 
 export default usePanelInfo;
