@@ -8,9 +8,7 @@ import TitleBar from './TitleBar';
 
 const Layout = () => (
     <>
-        <header>
-            <TitleBar />
-        </header>
+        <TitleBar />
         <Container fluid>
             <Row className="flex-xl-nowrap">
                 <Col xs={12} md={3} lg={2}>
