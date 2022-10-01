@@ -21,7 +21,6 @@ type Info = Array<{
 // const cont = document.getElementById(GridLayout.Container)!;
 
 // containerの子要素を更新する
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 const ContainerUpdate = (info: Info, flag: boolean) => {
     // サイズ調整とか
     const panelAdjust = (
@@ -76,3 +75,5 @@ const ContainerUpdate = (info: Info, flag: boolean) => {
         </GridLayout.Container>
     );
 };
+
+export default ContainerUpdate;
