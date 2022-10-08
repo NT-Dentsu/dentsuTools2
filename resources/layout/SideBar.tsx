@@ -11,8 +11,8 @@ const SidePanel = styled(Nav)`
     @media (min-width: 768px) {
         // md(768px)以上のとき適用
         position: sticky;
-        top: 0;
-        height: 100vh;
+        top: 87.5px; // タイトルバーの高さ
+        height: calc(100vh - 87.5px);
         z-index: 1000;
         border-right: 1px solid #ececec;
     }
