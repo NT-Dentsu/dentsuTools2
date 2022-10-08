@@ -9,7 +9,7 @@
 import { useEffect, useState } from 'react';
 
 // PanelInfoをimport
-import usePanelInfo, { PanelInfoProps } from '../hooks/PanelInfo';
+import usePanelInfo, { PanelInfoProps } from './PanelInfo';
 
 // ダミー関数用の値
 const dummy: PanelInfoProps = {
@@ -38,7 +38,7 @@ const DummyGetPresetData = (presetId: string) => {
 };
 
 // データベースから現在のユーザのパネルデータを読み込み，表示用に成型して返り値に渡す
-export const PanelInit = () => {
+export const usePanelInit = () => {
     // 取得したデータ格納用
     const [userPanelsData, setUserPanelData] = useState<{ status: number; array: PanelInfoProps[] }>({
         status: 0,
@@ -65,7 +65,7 @@ export const PanelInit = () => {
 };
 
 // データベースから指定したプリセットパネルデータを読み込んみ，表示用に成型して返り値に渡す
-export const PanelPreset = (presetId: string) => {
+export const usePanelPreset = (presetId: string) => {
     // 取得したデータ格納用
     const [userPanelsData, setUserPanelData] = useState<{ status: number; array: PanelInfoProps[] }>({
         status: 0,
