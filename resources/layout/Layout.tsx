@@ -4,12 +4,11 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import SideBar from './SideBar';
+import TitleBar from './TitleBar';
 
 const Layout = () => (
     <>
-        <header>
-            <h1 style={{ textAlign: 'center' }}>タイトルバー</h1>
-        </header>
+        <TitleBar />
         <Container fluid>
             <Row className="flex-xl-nowrap">
                 <Col xs={12} md={3} lg={2}>
