@@ -9,7 +9,7 @@
 import { useEffect, useState } from 'react';
 
 // PanelInfoをimport
-import usePanelInfo, { PanelInfoProps } from '../Hooks/PanelInfo';
+import usePanelInfo, { PanelInfoProps } from '../hooks/PanelInfo';
 
 // ダミー関数用の値
 const dummy: PanelInfoProps = {
