@@ -1,30 +1,26 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import SideBar from './SideBar';
 
 const Layout = () => (
-    <div>
-        <div>
+    <>
+        <header>
             <h1 style={{ textAlign: 'center' }}>タイトルバー</h1>
-        </div>
-        <div>
-            <h2>サイドバー</h2>
-            <ul>
-                <li>
-                    <NavLink to="/">Home</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/profile">Profile</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/customize">Customize</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/signin">Signin</NavLink>
-                </li>
-            </ul>
-        </div>
-        <Outlet />
-    </div>
+        </header>
+        <Container fluid>
+            <Row className="flex-xl-nowrap">
+                <Col xs={12} md={3} lg={2}>
+                    <SideBar />
+                </Col>
+                <Col as="main" xs={12} md={9} lg={10}>
+                    <Outlet />
+                </Col>
+            </Row>
+        </Container>
+    </>
 );
 
 export default Layout;

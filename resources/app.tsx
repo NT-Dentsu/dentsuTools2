@@ -13,5 +13,5 @@ import './bootstrap';
  */
 
 // Bootstrapライブラリの読み込み
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import './route';
