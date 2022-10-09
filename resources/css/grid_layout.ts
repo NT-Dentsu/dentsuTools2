@@ -35,8 +35,9 @@ export const Container = styled.div`
 // パネル用
 
 // propsのためのtype
-type Area = {
+type Props = {
     area: string;
+    name?: string; // 任意要素にする
 };
 // panelを正方形にする用
 export const PanelWrap = styled.div`
@@ -45,7 +46,8 @@ export const PanelWrap = styled.div`
     margin: 0px;
     z-index: 10;
     /* grid-areaをpropで指定 */
-    grid-area: ${(props: Area) => props.area};
+    grid-area: ${(props: Props) => props.area};
+    name:${(props: Props) => props.name}
 
     &::before {
         content: '';
