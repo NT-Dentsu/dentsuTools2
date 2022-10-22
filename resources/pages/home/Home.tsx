@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Heart } from 'react-feather';
 
 // styled componetnts(glid-layout用)をインポート
-import * as GridLayout from '../../css/grid_layout';
+import * as GridLayout from '../../css/GridLayout';
 
 type MessageResponse = {
     message: string;
