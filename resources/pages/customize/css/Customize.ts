@@ -152,7 +152,7 @@ export const CustomizeButton = styled.div`
 `;
 
 /* ボタンのCSS */
-export const Button = styled.button`
+export const Button = styled(CustomizeButton.withComponent('button'))`
     font-size: 26px;
     /* 最小幅を設定する */
     min-width: 250px;
