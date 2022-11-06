@@ -47,7 +47,7 @@ export const PanelWrap = styled.div`
     z-index: 10;
     /* grid-areaをpropで指定 */
     grid-area: ${(props: Props) => props.area};
-    name:${(props: Props) => props.name}
+    name: ${(props: Props) => props.name};
 
     &::before {
         content: '';
