@@ -7,7 +7,7 @@
 
 import React, { Fragment } from 'react';
 // import usePanelInfo from './PanelInfo';
-import * as GridLayout from '../css/grid_layout';
+import * as GridLayout from '../css/GridLayout';
 
 // Infoの型宣言
 type Info = Array<{
