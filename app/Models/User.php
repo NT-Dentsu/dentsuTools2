@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -64,16 +65,17 @@ class User extends Authenticatable
 
     public static function createAccount($id, $password)
     {
-        $PRESETID = 'preset001'; // よくない
+        DB::transaction(function () use ($id, $password) {
+            $PRESETID = 'preset001'; // よくない
+            User::create(['user_id' => $id, 'user_name' => $id, 'password_hash' => Hash::make($password)]);
 
-        User::create(['user_id' => $id, 'user_name' => $id, 'password_hash' => Hash::make($password)]);
+            // プリセットのデータをユーザのレコードに挿入
+            $presetData = PanelInfo::where('user_id', $PRESETID)->get()->toArray();
 
-        // プリセットのデータをユーザのレコードに挿入
-        $presetData = PanelInfo::where('user_id', $PRESETID)->get()->toArray();
-
-        for ($i = 0; $i < count($presetData); ++$i) {
-            $presetData[$i]['user_id'] = $id;
-        }
-        PanelInfo::create($presetData);
+            for ($i = 0; $i < count($presetData); ++$i) {
+                $presetData[$i]['user_id'] = $id;
+            }
+            PanelInfo::create($presetData);
+        });
     }
 }
