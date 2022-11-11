@@ -56,7 +56,7 @@ class LoginController extends Controller
             'password' => ['required', 'string', 'between:6,20', 'regex:/^[0-9a-zA-Z\-]+$/', 'not_regex:/^preset.*$/'],
         ]);
 
-        User::create(['user_id' => $validated['id'], 'user_name' => $validated['id'], 'password_hash' => Hash::make($validated['password'])]);
+        User::createAccount($validated['id'], $validated['password']);
         return response()->json(['message' => 'アカウント作成成功'], Response::HTTP_OK);
     }
 
