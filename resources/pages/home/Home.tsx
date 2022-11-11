@@ -16,13 +16,14 @@ type User = {
     insert_time: string;
 };
 
-const Home = () => {
+const Home = ({ signout }: { signout: () => void }) => {
     const navigate = useNavigate();
     const logout = () => {
         axios
             .post<MessageResponse>('/api/signout')
             .then((response) => {
                 alert(response.data.message);
+                signout(); // 認証しているかどうかの状態を未認証にする
                 navigate('/signin');
             })
             .catch((error: AxiosError<MessageResponse>) => {

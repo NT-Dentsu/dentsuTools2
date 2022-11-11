@@ -80,4 +80,12 @@ class LoginController extends Controller
         Auth::logout();
         return response()->json(['message' => 'ログアウト成功'], Response::HTTP_OK);
     }
+
+    public function authcheck(Request $request)
+    {
+        if ($request->user()) {
+            return response()->json(['message' => 'Authenticated.'], Response::HTTP_OK);
+        }
+        return response()->json(['message' => 'Unauhthenticated.'], Response::HTTP_UNAUTHORIZED);
+    }
 }

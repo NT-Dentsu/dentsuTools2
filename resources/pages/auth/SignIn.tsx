@@ -15,7 +15,7 @@ type MessageResponse = {
     message: string;
 };
 
-const SigninForm = () => {
+const SigninForm = ({ signin }: { signin: () => void }) => {
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -32,6 +32,7 @@ const SigninForm = () => {
                     .post<MessageResponse>('/api/signin', loginParams)
                     .then((response) => {
                         alert(response.data.message);
+                        signin(); // 認証しているかどうかの状態を認証済にする
                         navigate('/');
                     })
                     .catch((error: AxiosError<MessageResponse>) => {

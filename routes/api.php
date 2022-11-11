@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/signup', [LoginController::class, 'signup']);
 Route::post('/signin', [LoginController::class, 'signin']);
 Route::post('/signout', [LoginController::class, 'signout']);
-
+Route::get('/authcheck', [LoginController::class, 'authcheck']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
     // 認証後に限り利用できるAPIはここに書く
     Route::get('/user', function (Request $request) {

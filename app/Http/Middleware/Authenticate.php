@@ -17,7 +17,7 @@ class Authenticate extends Middleware
     {
         if (!$request->expectsJson()) {
             // ホームに遷移
-            return '/';
+            return '/signin';
         }
     }
 }
