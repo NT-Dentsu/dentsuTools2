@@ -16,7 +16,7 @@ type User = {
     insert_time: string;
 };
 
-const Home = ({ signout }: { signout: () => void }) => {\
+const Home = ({ signout }: { signout: () => void }) => {
     const navigate = useNavigate();
     const logout = () => {
         axios
