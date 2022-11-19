@@ -47,8 +47,9 @@ export const MenuLi = styled(Menu.withComponent('li'))`
     margin-bottom: 1px;
     text-align: center;
     padding: 0px;
-    width: calc(100% / 3);
+    width: calc(100% / 3.2);
     height: 100%;
+    display: flex;
 
     /* リストを横並びに */
     float: left;
@@ -61,6 +62,7 @@ export const MenuLi = styled(Menu.withComponent('li'))`
  */
 export const MenuLiLabel = styled(MenuLi.withComponent('a'))`
     display: block;
+    width: 100%;
     font-size: 14pt;
     color: #000;
     text-decoration: none;
