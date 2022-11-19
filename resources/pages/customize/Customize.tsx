@@ -42,10 +42,27 @@ const Customize = () => {
                             <GridLayout.PanelWrap area="4 / 2" name="13" />
                             <GridLayout.PanelWrap area="4 / 3" name="14" />
                             <GridLayout.PanelWrap area="4 / 4" name="15" />
+
                             {/* ここにパネルが追加される */}
                         </GridLayout.Container>
                     </GridLayout.Wrapper>
                 </Cust.Preview>
+                {/* メニュー画面 */}
+                <Cust.Menu>
+                    <h5>Customize Menu</h5>
+                    {/* 非常に見にくいので後でまとめる */}
+                    <Cust.MenuUl>
+                        <Cust.MenuLi>
+                            <Cust.MenuLiLabel>Panel</Cust.MenuLiLabel>
+                        </Cust.MenuLi>
+                        <Cust.MenuLi>
+                            <Cust.MenuLiLabel>Contents</Cust.MenuLiLabel>
+                        </Cust.MenuLi>
+                        <Cust.MenuLi>
+                            <Cust.MenuLiLabel>Preset</Cust.MenuLiLabel>
+                        </Cust.MenuLi>
+                    </Cust.MenuUl>
+                </Cust.Menu>
             </Cust.CustomizeFlex>
         </>
     );
