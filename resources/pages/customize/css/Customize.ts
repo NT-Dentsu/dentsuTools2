@@ -19,12 +19,13 @@ export const CustomizeFlex = styled.div`
 
 export const Preview = styled(CustomizeFlex)`
     width: 60%;
+    display: block;
 `;
 
 export const Menu = styled(CustomizeFlex)`
     width: 40%;
     margin-left: 1.5%;
-    /* display: block; */
+    display: block;
 `;
 
 /* タブメニュー用のCSS */
