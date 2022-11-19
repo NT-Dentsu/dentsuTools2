@@ -17,18 +17,18 @@ export const CustomizeFlex = styled.div`
     display: flex;
 `;
 
-export const Preview = styled.div`
+export const Preview = styled(CustomizeFlex)`
     width: 60%;
 `;
 
-export const Menu = styled.div`
+export const Menu = styled(CustomizeFlex)`
     width: 40%;
     margin-left: 1.5%;
     /* display: block; */
 `;
 
 /* タブメニュー用のCSS */
-export const MenuUl = styled.ul`
+export const MenuUl = styled(Menu.withComponent('ul'))`
     display: block;
     /* float: left; */
     margin: 0px;
@@ -41,7 +41,7 @@ export const MenuUl = styled.ul`
     background: #555;
 `;
 
-export const MenuLi = styled.li`
+export const MenuLi = styled(Menu.withComponent('li'))`
     border-bottom: 1px solid #000;
     margin-bottom: 1px;
     text-align: center;
@@ -58,7 +58,7 @@ export const MenuLi = styled.li`
 	border-bottom: 0px;
 }
  */
-export const MenuLiLabel = styled.a`
+export const MenuLiLabel = styled(MenuLi.withComponent('a'))`
     display: block;
     font-size: 14pt;
     color: #000;
@@ -80,7 +80,7 @@ export const MenuLiLabel = styled.a`
     }
 `;
 
-export const MenuTab = styled.div`
+export const MenuTab = styled(Menu)`
     /* display: block; */
     /* float: left; */
     background: #eee;
@@ -95,18 +95,18 @@ export const MenuTab = styled.div`
 export const Panel = styled.div`
     flex-wrap: wrap;
 `;
-export const PanelThumbnail = styled.div`
+export const PanelThumbnail = styled(Panel)`
     display: flex;
     background-color: limegreen;
     width: 40%;
     height: auto;
     margin: 2.5%;
 `;
-export const PanelThumbnailLabel = styled.div`
+export const PanelThumbnailLabel = styled(PanelThumbnail.withComponent('label'))`
     width: 200px;
     margin: 0 10% 0 0;
 `;
-export const PanelThumbnailImg = styled.img`
+export const PanelThumbnailImg = styled(PanelThumbnail.withComponent('img'))`
     /* 画像は初期値でドラッグ可能 */
     width: 100%;
 `;
@@ -122,7 +122,7 @@ export const Preset = styled.div`
     flex-wrap: wrap;
 `;
 
-export const PresetThumbnail = styled.div`
+export const PresetThumbnail = styled(Preset)`
     display: block;
     background-color: darkmagenta;
     width: 50%;
@@ -130,7 +130,7 @@ export const PresetThumbnail = styled.div`
     margin: 2.5%;
 `;
 
-export const PresetThumbnailImg = styled.img`
+export const PresetThumbnailImg = styled(PresetThumbnail.withComponent('img'))`
     width: 50%;
     height: 50%;
 `;
