@@ -59,6 +59,8 @@ GET /api/panels
 }[]
 ```
 
+`panel_name`と`panel_size`が NULL のレコードは取得しません。
+
 ステータスコードがそれ以外のとき
 
 ```
@@ -90,6 +92,10 @@ POST /api/panels
     "panel_size" : number
 }[]
 ```
+
+存在するパネルだけ JSON に含めて送信してください。
+`panel_name`または`panel_size`が NULL のレコードがあるとエラーを返します。
+JSON が不正な形式のときや割り当てができないパネルのときはエラーを返します。
 
 ### Response
 
