@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -60,22 +62,20 @@ class User extends Authenticatable
     {
         return $this->password_hash;
     }
-    // /**
-    //  * The attributes that should be hidden for serialization.
-    //  *
-    //  * @var array<int, string>
-    //  */
-    // protected $hidden = [
-    //     'password',
-    //     'remember_token',
-    // ];
 
-    // /**
-    //  * The attributes that should be cast.
-    //  *
-    //  * @var array<string, string>
-    //  */
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    // ];
+    public static function createAccount($id, $password)
+    {
+        DB::transaction(function () use ($id, $password) {
+            $PRESETID = 'preset001'; // よくない
+            User::create(['user_id' => $id, 'user_name' => $id, 'password_hash' => Hash::make($password)]);
+
+            // プリセットのデータをユーザのレコードに挿入
+            $presetData = PanelInfo::where('user_id', $PRESETID)->get()->toArray();
+
+            for ($i = 0; $i < count($presetData); ++$i) {
+                $presetData[$i]['user_id'] = $id;
+            }
+            PanelInfo::create($presetData);
+        });
+    }
 }

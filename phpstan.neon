@@ -11,7 +11,7 @@ parameters:
         - routes
         - tests
     # The level 9 is the highest level
-    level: 3
+    level: 2
 
     ignoreErrors:
         - '#PHPDoc tag @var#'
