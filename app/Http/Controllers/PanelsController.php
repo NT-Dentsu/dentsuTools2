@@ -29,7 +29,7 @@ class PanelsController extends Controller
         $record = PanelInfo::Join('m_panel', 't_user_panel_info.panel_name', '=', 'm_panel.panel_name')
             ->select('m_panel.panel_name', 'anchor_num', 'panel_size', 'content_link', 'content_image')
             ->where('user_id', $userId)->get()->toArray();
-        return response()->json($record, Response::HTTP_OK);
+        return response()->json(['panels' => $record], Response::HTTP_OK);
     }
 
     /**

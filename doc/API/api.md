@@ -51,12 +51,14 @@ GET /api/panels
 
 ```
 {
-    "panel_name": string,
-    "anchor_num": number,
-    "panel_size": number,
-    "content_link": string,
-    "content_image": string
-}[]
+    "panels": {
+        "panel_name": string,
+        "anchor_num": number,
+        "panel_size": number,
+        "content_link": string,
+        "content_image": string
+    }[]
+}
 ```
 
 `panel_name`と`panel_size`が NULL のレコードは取得しません。
@@ -89,10 +91,12 @@ POST /api/panels
 
 ```
 {
-    "panel_name" : string,
-    "anchor_num" : number,
-    "panel_size" : number
-}[]
+    "layout": {
+        "panel_name" : string,
+        "anchor_num" : number,
+        "panel_size" : number
+    }[]
+}
 ```
 
 存在するパネルだけ JSON に含めて送信してください。
@@ -105,12 +109,14 @@ JSON が割り当てができないパネルのときはエラーを返します
 
 ```
 {
-    "panel_name": string,
-    "anchor_num": number,
-    "panel_size": number,
-    "content_link": string,
-    "content_image": string
-}[]
+    "panels": {
+        "panel_name": string,
+        "anchor_num": number,
+        "panel_size": number,
+        "content_link": string,
+        "content_image": string
+    }[]
+}
 ```
 
 ステータスコードがそれ以外のとき
