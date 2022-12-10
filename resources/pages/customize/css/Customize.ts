@@ -71,6 +71,7 @@ export const MenuLiLabel = styled(MenuLi.withComponent('a'))`
     background: #eee;
     /* background: -webkit-linear-gradient(top,#444,#333); */
     /* background: -moz-linear-gradient(top,#444,#333); */
+    name: ${(props: { name: string }) => props.name};
 
     /* 縦書き */
     /* writing-mode: vertical-rl; */
@@ -101,7 +102,7 @@ export const Panel = styled.div`
 export const PanelThumbnail = styled(Panel)`
     display: flex;
     background-color: limegreen;
-    width: 40%;
+    width: ${(props: { width?: string }) => props.width};
     height: auto;
     margin: 2.5%;
 `;
@@ -112,6 +113,8 @@ export const PanelThumbnailLabel = styled(PanelThumbnail.withComponent('label'))
 export const PanelThumbnailImg = styled(PanelThumbnail.withComponent('img'))`
     /* 画像は初期値でドラッグ可能 */
     width: 100%;
+    // name設定
+    name: ${(props: { name: string }) => props.name};
 `;
 
 /* コンテンツ */
