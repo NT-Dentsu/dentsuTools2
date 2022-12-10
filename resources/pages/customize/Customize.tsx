@@ -1,7 +1,7 @@
 /**
  * 制作者：NumLock
  * 制作日：2022/11/19
- * 更新日：
+ * 更新日：2022/11/26
  * 概要：パネルカスタマイズ画面の外枠を定義
  */
 
@@ -9,6 +9,39 @@ import React from 'react';
 import * as Cust from './css/Customize';
 import * as GridLayout from '../../css/GridLayout';
 
+// タブ部分
+const TabMenu = () => {
+    // タグクリック時の動作
+    const menuSelected = (event: React.MouseEvent) => {
+        console.log('hoge');
+        console.log(event.target);
+        // console.log(event.currentTarget);
+
+        // 何がクリックされたか判断
+        // aタグでなければ何もしない
+        // クリックされたタグに応じて中身の表示を変更
+        // select要素をつけたり外したりもする
+    };
+
+    return (
+        <Cust.Menu>
+            <h5>Customize Menu</h5>
+            <Cust.MenuUl onClick={menuSelected}>
+                <Cust.MenuLi>
+                    <Cust.MenuLiLabel>Panel</Cust.MenuLiLabel>
+                </Cust.MenuLi>
+                <Cust.MenuLi>
+                    <Cust.MenuLiLabel>Contents</Cust.MenuLiLabel>
+                </Cust.MenuLi>
+                <Cust.MenuLi>
+                    <Cust.MenuLiLabel>Preset</Cust.MenuLiLabel>
+                </Cust.MenuLi>
+            </Cust.MenuUl>
+        </Cust.Menu>
+    );
+};
+
+// カスタマイズ画面の本体？
 const Customize = () => {
     const hoge = () => {
         console.log('hoge');
@@ -48,21 +81,7 @@ const Customize = () => {
                     </GridLayout.Wrapper>
                 </Cust.Preview>
                 {/* メニュー画面 */}
-                <Cust.Menu>
-                    <h5>Customize Menu</h5>
-                    {/* 非常に見にくいので後でまとめる */}
-                    <Cust.MenuUl>
-                        <Cust.MenuLi>
-                            <Cust.MenuLiLabel>Panel</Cust.MenuLiLabel>
-                        </Cust.MenuLi>
-                        <Cust.MenuLi>
-                            <Cust.MenuLiLabel>Contents</Cust.MenuLiLabel>
-                        </Cust.MenuLi>
-                        <Cust.MenuLi>
-                            <Cust.MenuLiLabel>Preset</Cust.MenuLiLabel>
-                        </Cust.MenuLi>
-                    </Cust.MenuUl>
-                </Cust.Menu>
+                {TabMenu()}
             </Cust.CustomizeFlex>
         </>
     );
