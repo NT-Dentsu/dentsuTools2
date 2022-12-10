@@ -1,26 +1,45 @@
 /**
  * 制作者：NumLock
  * 制作日：2022/11/19
- * 更新日：2022/11/26
+ * 更新日：2022/12/10
  * 概要：パネルカスタマイズ画面の外枠を定義
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import * as Cust from './css/Customize';
 import * as GridLayout from '../../css/GridLayout';
+import * as Contents from './components/CustomizeContents';
+import * as Panel from './components/CustomizePanel';
+import * as Preset from './components/CustomizePreset';
 
 // タブ部分
 const TabMenu = () => {
+    // 状態変数
+    const [select, setSelect] = useState('Contents');
+    const [element, setElement] = useState(Contents.Contents);
+
     // タグクリック時の動作
     const menuSelected = (event: React.MouseEvent) => {
-        console.log('hoge');
+        // console.log('hoge');
         console.log(event.target);
+        // console.log(event.target.name);
         // console.log(event.currentTarget);
 
         // 何がクリックされたか判断
         // aタグでなければ何もしない
         // クリックされたタグに応じて中身の表示を変更
         // select要素をつけたり外したりもする
+
+        setSelect('Contents');
+        // setSelect(event.target.name);
+        // 選択要素変更
+        if (select === 'Contents') {
+            setElement(Contents.Contents);
+        } else if (select === 'Panel') {
+            setElement(Panel.Panel);
+        } else if (select === 'Preset') {
+            setElement(Preset.Preset);
+        }
     };
 
     return (
@@ -28,15 +47,16 @@ const TabMenu = () => {
             <h5>Customize Menu</h5>
             <Cust.MenuUl onClick={menuSelected}>
                 <Cust.MenuLi>
-                    <Cust.MenuLiLabel>Panel</Cust.MenuLiLabel>
+                    <Cust.MenuLiLabel name="Panel">Panel</Cust.MenuLiLabel>
                 </Cust.MenuLi>
                 <Cust.MenuLi>
-                    <Cust.MenuLiLabel>Contents</Cust.MenuLiLabel>
+                    <Cust.MenuLiLabel name="Contents">Contents</Cust.MenuLiLabel>
                 </Cust.MenuLi>
                 <Cust.MenuLi>
-                    <Cust.MenuLiLabel>Preset</Cust.MenuLiLabel>
+                    <Cust.MenuLiLabel name="Preset">Preset</Cust.MenuLiLabel>
                 </Cust.MenuLi>
             </Cust.MenuUl>
+            {element}
         </Cust.Menu>
     );
 };
