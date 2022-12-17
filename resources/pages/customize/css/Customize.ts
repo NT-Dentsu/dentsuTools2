@@ -68,11 +68,9 @@ export const MenuLiLabel = styled(MenuLi.withComponent('a'))`
     display: block;
     width: 100%;
     font-size: 14pt;
-    color: #000;
     text-decoration: none;
     padding: 7%;
     height: 100%;
-    background: #eee;
     /* background: -webkit-linear-gradient(top,#444,#333); */
     /* background: -moz-linear-gradient(top,#444,#333); */
     name: ${(props: MenuLiLabelProps) => props.name};
@@ -82,10 +80,8 @@ export const MenuLiLabel = styled(MenuLi.withComponent('a'))`
     /* text-orientation: sideways; */
     /* padding: 20%; */
 
-    &.selected {
-        background: #000;
-        color: #eee;
-    }
+    ${(props: MenuLiLabelProps) =>
+        props.name === props.selected ? 'background: #000; color: #eee;' : 'background: #eee; color: #000;'}
 `;
 
 export const MenuTab = styled(Menu)`
