@@ -19,10 +19,10 @@ const TabMenu = () => {
     const [element, setElement] = useState(Contents.Contents);
 
     // タグクリック時の動作
-    const menuSelected = (event: React.MouseEvent) => {
+    const menuSelected = (value: string) => {
         // console.log('hoge');
-        console.log(event.target);
-        // console.log(event.target.name);
+        // console.log(event.target);
+        // console.log(event.currentTarget);
         // console.log(event.currentTarget);
 
         // 何がクリックされたか判断
@@ -30,30 +30,38 @@ const TabMenu = () => {
         // クリックされたタグに応じて中身の表示を変更
         // select要素をつけたり外したりもする
 
-        setSelect('Contents');
-        // setSelect(event.target.name);
+        // setSelect('Contents');
+        setSelect(value); // 更新は非同期，この関数から抜けると実行?
         // 選択要素変更
-        if (select === 'Contents') {
+        if (value === 'Contents') {
             setElement(Contents.Contents);
-        } else if (select === 'Panel') {
+        } else if (value === 'Panel') {
             setElement(Panel.Panel);
-        } else if (select === 'Preset') {
+        } else if (value === 'Preset') {
             setElement(Preset.Preset);
         }
+        console.log(value);
+        // console.log(select);
     };
 
     return (
         <Cust.Menu>
             <h5>Customize Menu</h5>
-            <Cust.MenuUl onClick={menuSelected}>
-                <Cust.MenuLi>
-                    <Cust.MenuLiLabel name="Panel">Panel</Cust.MenuLiLabel>
+            <Cust.MenuUl>
+                <Cust.MenuLi onClick={() => menuSelected('Panel')}>
+                    <Cust.MenuLiLabel name="Panel" selected={select}>
+                        Panel
+                    </Cust.MenuLiLabel>
                 </Cust.MenuLi>
-                <Cust.MenuLi>
-                    <Cust.MenuLiLabel name="Contents">Contents</Cust.MenuLiLabel>
+                <Cust.MenuLi onClick={() => menuSelected('Contents')}>
+                    <Cust.MenuLiLabel name="Contents" selected={select}>
+                        Contents
+                    </Cust.MenuLiLabel>
                 </Cust.MenuLi>
-                <Cust.MenuLi>
-                    <Cust.MenuLiLabel name="Preset">Preset</Cust.MenuLiLabel>
+                <Cust.MenuLi onClick={() => menuSelected('Preset')}>
+                    <Cust.MenuLiLabel name="Preset" selected={select}>
+                        Preset
+                    </Cust.MenuLiLabel>
                 </Cust.MenuLi>
             </Cust.MenuUl>
             {element}
