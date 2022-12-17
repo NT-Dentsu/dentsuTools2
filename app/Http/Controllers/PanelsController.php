@@ -26,9 +26,7 @@ class PanelsController extends Controller
             $userId = $validated['preset'];
         }
 
-        $record = PanelInfo::Join('m_panel', 't_user_panel_info.panel_name', '=', 'm_panel.panel_name')
-            ->select('m_panel.panel_name', 'anchor_num', 'panel_size', 'content_link', 'content_image')
-            ->where('user_id', $userId)->get()->toArray();
+        $record = PanelInfo::getPanelsExceptNull($userId);
         return response()->json(['panels' => $record], Response::HTTP_OK);
     }
 
@@ -59,8 +57,9 @@ class PanelsController extends Controller
             );
         }
 
-        // DB更新
-        return response()->json(['message' => $request->name], Response::HTTP_OK);
+        PanelInfo::updatePanels($userId, $validated['layout']);
+        $record = PanelInfo::getPanelsExceptNull($userId);
+        return response()->json(['panels' => $record], Response::HTTP_OK);
     }
 
     // 指定したパネルが特定の位置にあるときにはみでていないかどうか

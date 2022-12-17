@@ -153,6 +153,18 @@ class PanelsTest extends TestCase
         ],
     ];
 
+    private $expectedSimplePanels = [
+        'panels' => [
+            [
+                'panel_name' => 'size S',
+                'anchor_num' => 5,
+                'panel_size' => 5,
+                'content_image' => '/assets/images/image_panel_S.jpg',
+                'content_link' => '/app/kindle_copy',
+            ],
+        ],
+    ];
+
     private $preset002Panels = [
         'layout' => [
             [
@@ -198,6 +210,16 @@ class PanelsTest extends TestCase
             [
                 'panel_name' => 'size S',
                 'anchor_num' => 15,
+                'panel_size' => 5,
+            ],
+        ],
+    ];
+
+    private $simplePanels = [
+        'layout' => [
+            [
+                'panel_name' => 'size S',
+                'anchor_num' => 5,
                 'panel_size' => 5,
             ],
         ],
@@ -300,17 +322,21 @@ class PanelsTest extends TestCase
 
         // パネル更新が成功するケース1 preset002に更新
         $response = $this->actingAs($user)->postJson('/api/panels', $this->preset002Panels);
-        $response->assertStatus(Response::HTTP_OK);
+        $response
+            ->assertStatus(Response::HTTP_OK)
+            ->assertExactJson($this->expectedPreset002)
+        ;
 
         // パネル更新が成功するケース2
-        $changedPreset002panels = $this->preset002Panels;
-        $changedPreset002panels['layout'][4] = [
-            'panel_name' => 'size S',
-            'anchor_num' => 5,
-            'panel_size' => 5,
-        ];
-        $response = $this->actingAs($user)->postJson('/api/panels', $changedPreset002panels);
-        $response->assertStatus(Response::HTTP_OK);
+        $response = $this->actingAs($user)->postJson('/api/panels', $this->simplePanels);
+        $response
+            ->assertStatus(Response::HTTP_OK)
+            ->assertExactJson($this->expectedSimplePanels)
+        ;
+
+        //
+        // 以下、エラー時のテスト
+        //
 
         // アンカー番号が重複するケース
         $changedPreset002panels = $this->preset002Panels;
@@ -391,8 +417,5 @@ class PanelsTest extends TestCase
         // 割り当てができないケース3 下側がはみでる
         $response = $this->actingAs($user)->postJson('/api/panels', $this->stickoutPanels2);
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
-
-        // dump($errorPreset002Panels);
-        // $response->dump();
     }
 }
