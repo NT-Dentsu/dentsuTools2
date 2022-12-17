@@ -60,6 +60,10 @@ export const MenuLi = styled(Menu.withComponent('li'))`
 	border-bottom: 0px;
 }
  */
+type MenuLiLabelProps = {
+    name?: string;
+    selected: string;
+};
 export const MenuLiLabel = styled(MenuLi.withComponent('a'))`
     display: block;
     width: 100%;
@@ -71,7 +75,7 @@ export const MenuLiLabel = styled(MenuLi.withComponent('a'))`
     background: #eee;
     /* background: -webkit-linear-gradient(top,#444,#333); */
     /* background: -moz-linear-gradient(top,#444,#333); */
-    name: ${(props: { name: string }) => props.name};
+    name: ${(props: MenuLiLabelProps) => props.name};
 
     /* 縦書き */
     /* writing-mode: vertical-rl; */
