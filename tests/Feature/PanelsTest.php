@@ -207,14 +207,34 @@ class PanelsTest extends TestCase
     private $superimposedPanels = [
         'layout' => [
             [
-                'panel_name' => 'size S',
+                'panel_name' => 'size M hol',
                 'anchor_num' => 0,
-                'panel_size' => 5,
+                'panel_size' => 4,
             ],
             [
                 'panel_name' => 'size L',
                 'anchor_num' => 1,
-                'panel_size' => 5,
+                'panel_size' => 2,
+            ],
+        ],
+    ];
+
+    private $stickoutPanels1 = [
+        'layout' => [
+            [
+                'panel_name' => 'size M hol',
+                'anchor_num' => 3,
+                'panel_size' => 4,
+            ],
+        ],
+    ];
+
+    private $stickoutPanels2 = [
+        'layout' => [
+            [
+                'panel_name' => 'size L',
+                'anchor_num' => 13,
+                'panel_size' => 2,
             ],
         ],
     ];
@@ -292,7 +312,7 @@ class PanelsTest extends TestCase
         $response = $this->actingAs($user)->postJson('/api/panels', $changedPreset002panels);
         $response->assertStatus(Response::HTTP_OK);
 
-        // パネル更新が成功するケース3 アンカー番号が重複するケース
+        // アンカー番号が重複するケース
         $changedPreset002panels = $this->preset002Panels;
         $changedPreset002panels['layout'][1] = [
             'panel_name' => 'size M hol',
@@ -300,7 +320,7 @@ class PanelsTest extends TestCase
             'panel_size' => 4,
         ];
         $response = $this->actingAs($user)->postJson('/api/panels', $changedPreset002panels);
-        $response->assertStatus(Response::HTTP_OK);
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
 
         // Preset002Panelsを一部変更して，エラーが発生するようなケースをテスト
         $errorPreset002Panels = $this->preset002Panels;
@@ -350,11 +370,11 @@ class PanelsTest extends TestCase
         $response = $this->actingAs($user)->postJson('/api/panels', $errorPreset002Panels);
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
 
-        // 割り当てができないケース1
+        // 割り当てができないケース1 重なる
         $response = $this->actingAs($user)->postJson('/api/panels', $this->superimposedPanels);
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
 
-        // 割り当てができないケース2
+        // 割り当てができないケース2 重なる
         $errorPreset002Panels = $this->preset002Panels;
         $errorPreset002Panels['layout'][] = [
             'panel_name' => 'size S',
@@ -362,6 +382,14 @@ class PanelsTest extends TestCase
             'panel_size' => 5,
         ];
         $response = $this->actingAs($user)->postJson('/api/panels', $errorPreset002Panels);
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+
+        // 割り当てができないケース3 右側がはみでる
+        $response = $this->actingAs($user)->postJson('/api/panels', $this->stickoutPanels1);
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+
+        // 割り当てができないケース3 下側がはみでる
+        $response = $this->actingAs($user)->postJson('/api/panels', $this->stickoutPanels2);
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
 
         // dump($errorPreset002Panels);

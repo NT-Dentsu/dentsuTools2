@@ -9,6 +9,15 @@ class PanelInfo extends Model
 {
     use HasFactory;
 
+    public const HEIGHT = 4;
+    public const WIDTH = 4;
+    public const MAX_PANELS = self::HEIGHT * self::WIDTH;
+
+    public const SIZE_L = 2;
+    public const SIZE_M_VAR = 3;
+    public const SIZE_M_HOL = 4;
+    public const SIZE_S = 5;
+
     /**
      * モデルのIDを自動増分するか.
      *
