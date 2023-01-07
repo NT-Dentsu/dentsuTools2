@@ -65,9 +65,10 @@ class User extends Authenticatable
 
     public static function createAccount($id, $password)
     {
-        DB::transaction(function () use ($id, $password) {
+        // Userクラスのインスタンスを返す
+        return DB::transaction(function () use ($id, $password) {
             $PRESETID = 'preset001'; // よくない
-            User::create(['user_id' => $id, 'user_name' => $id, 'password_hash' => Hash::make($password)]);
+            $user = User::create(['user_id' => $id, 'user_name' => $id, 'password_hash' => Hash::make($password)]);
 
             // プリセットのデータをユーザのレコードに挿入
             $presetData = PanelInfo::where('user_id', $PRESETID)->get()->toArray();
@@ -76,6 +77,8 @@ class User extends Authenticatable
                 $presetData[$i]['user_id'] = $id;
             }
             PanelInfo::create($presetData);
+
+            return $user;
         });
     }
 }
