@@ -17,18 +17,19 @@ export const CustomizeFlex = styled.div`
     display: flex;
 `;
 
-export const Preview = styled.div`
+export const Preview = styled(CustomizeFlex)`
     width: 60%;
+    display: block;
 `;
 
-export const Menu = styled.div`
+export const Menu = styled(CustomizeFlex)`
     width: 40%;
     margin-left: 1.5%;
-    /* display: block; */
+    display: block;
 `;
 
 /* タブメニュー用のCSS */
-export const MenuUl = styled.ul`
+export const MenuUl = styled(Menu.withComponent('ul'))`
     display: block;
     /* float: left; */
     margin: 0px;
@@ -41,13 +42,14 @@ export const MenuUl = styled.ul`
     background: #555;
 `;
 
-export const MenuLi = styled.li`
+export const MenuLi = styled(Menu.withComponent('li'))`
     border-bottom: 1px solid #000;
     margin-bottom: 1px;
     text-align: center;
     padding: 0px;
-    width: calc(100% / 3);
+    width: calc(100% / 3.2);
     height: 100%;
+    display: flex;
 
     /* リストを横並びに */
     float: left;
@@ -58,29 +60,31 @@ export const MenuLi = styled.li`
 	border-bottom: 0px;
 }
  */
-export const MenuLiLabel = styled.a`
+type MenuLiLabelProps = {
+    name?: string;
+    selected: string;
+};
+export const MenuLiLabel = styled(MenuLi.withComponent('a'))`
     display: block;
+    width: 100%;
     font-size: 14pt;
-    color: #000;
     text-decoration: none;
     padding: 7%;
     height: 100%;
-    background: #eee;
     /* background: -webkit-linear-gradient(top,#444,#333); */
     /* background: -moz-linear-gradient(top,#444,#333); */
+    name: ${(props: MenuLiLabelProps) => props.name};
 
     /* 縦書き */
     /* writing-mode: vertical-rl; */
     /* text-orientation: sideways; */
     /* padding: 20%; */
 
-    &.selected {
-        background: #000;
-        color: #eee;
-    }
+    ${(props: MenuLiLabelProps) =>
+        props.name === props.selected ? 'background: #000; color: #eee;' : 'background: #eee; color: #000;'}
 `;
 
-export const MenuTab = styled.div`
+export const MenuTab = styled(Menu)`
     /* display: block; */
     /* float: left; */
     background: #eee;
@@ -95,20 +99,22 @@ export const MenuTab = styled.div`
 export const Panel = styled.div`
     flex-wrap: wrap;
 `;
-export const PanelThumbnail = styled.div`
+export const PanelThumbnail = styled(Panel)`
     display: flex;
     background-color: limegreen;
-    width: 40%;
+    width: ${(props: { width?: string }) => props.width};
     height: auto;
     margin: 2.5%;
 `;
-export const PanelThumbnailLabel = styled.div`
+export const PanelThumbnailLabel = styled(PanelThumbnail.withComponent('label'))`
     width: 200px;
     margin: 0 10% 0 0;
 `;
-export const PanelThumbnailImg = styled.img`
+export const PanelThumbnailImg = styled(PanelThumbnail.withComponent('img'))`
     /* 画像は初期値でドラッグ可能 */
     width: 100%;
+    // name設定
+    name: ${(props: { name: string }) => props.name};
 `;
 
 /* コンテンツ */
@@ -122,7 +128,7 @@ export const Preset = styled.div`
     flex-wrap: wrap;
 `;
 
-export const PresetThumbnail = styled.div`
+export const PresetThumbnail = styled(Preset)`
     display: block;
     background-color: darkmagenta;
     width: 50%;
@@ -130,7 +136,7 @@ export const PresetThumbnail = styled.div`
     margin: 2.5%;
 `;
 
-export const PresetThumbnailImg = styled.img`
+export const PresetThumbnailImg = styled(PresetThumbnail.withComponent('img'))`
     width: 50%;
     height: 50%;
 `;
